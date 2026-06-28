@@ -1,11 +1,12 @@
 import os
 import requests
 
+
 def get_weather() -> None:
     api_key = os.environ.get("API_KEY")
-    URL = "http://api.weatherapi.com/v1/current.json"
+    url = "http://api.weatherapi.com/v1/current.json"
     request = requests.get(
-        URL,
+        url,
         {"key": api_key, "q": "Paris"}
     )
     data = request.json()
@@ -15,6 +16,7 @@ def get_weather() -> None:
     temp = data["current"]["temp_c"]
     text = data["current"]["condition"]["text"]
     print(f"{city}/{country} {time} Weather: {temp} Celsius, {text}")
+
 
 if __name__ == "__main__":
     get_weather()
